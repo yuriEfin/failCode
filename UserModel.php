@@ -4,6 +4,9 @@ class UserModel extends ActiveRecord {
     // создание пользователя
     public function create($params)
     {
+        if (!$params['name']){
+           throw new BadRequestHttpException('Требуется задать имя пользователя');
+        }
         $message = $this->gertMessage($params);
         
         $model = new User($params);
