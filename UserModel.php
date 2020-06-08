@@ -50,6 +50,11 @@ class UserModel extends ActiveRecord {
     
     public function gertMessage($params)
     {
-        // return $message
+        $ms = 'Информация о Вашем аккаунте';
+        $mess = 'Уведомление'. $ms;
+        
+        // ...
+        
+        return $message;
     }
 }
