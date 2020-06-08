@@ -1,10 +1,16 @@
 <?php
 
+
 class CodeOperation extends ActiveRecord {
+
+    public function getTable()
+    {
+       return 'operation_codes'
+    }
    /**
      * Обработка документов по обратному акцептированию.
      */
-    public static function import416()
+    public static function import416($unusedVar)
     {
         $docs = static::find()->andWhere(['operation_uid' => static::OPERATION_416, 'state' => static::STATE_CREATING])
             ->andWhere(new Expression('created_at> current_date - 14')) //ограничить проверку доков сроком - неделя/две
