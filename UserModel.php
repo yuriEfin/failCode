@@ -1,6 +1,6 @@
 <?php
 
-class UserModel extends ActiveRecord {
+class User extends ActiveRecord {
     
     public function rules()
     {
