@@ -1,12 +1,26 @@
 <?php
 
 class UserModel extends ActiveRecord {
+    
+    public function rules()
+    {
+        reutnr [
+            //...
+        ];        
+    }
     // создание пользователя
     public function create($params)
     {
         if (!$params['name']){
            throw new BadRequestHttpException('Требуется задать имя пользователя');
+        } elseif($params['isVip'] && !$params['vip_code']) {
+           throw new BadRequestHttpException('Требуется задать код для VIp клиента');
+            
         }
+        
+        $params['created_by'] = Yii::$app->user->id;
+        $params['created_at'] = date('Y-m-d H:i:s');
+        
         $message = $this->gertMessage($params);
         
         $model = new User($params);
